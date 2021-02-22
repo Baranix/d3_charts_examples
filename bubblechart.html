@@ -1,0 +1,98 @@
+<html>
+  <body>
+    <svg id="chart_area" width="500" height="500"></svg>
+
+    <div style="font-family: sans-serif; font-size: 16pt;">
+      <p>Hello! I can draw in d3.js!</p>
+      <p>Love,<br>Nikki</p>
+    </div>
+
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script>
+      var svg = d3.select("#chart_area")
+
+      // head
+      svg.append("circle")
+        .attr("cx", 250).attr("cy", 175).attr("r", 80).style("fill", "#993d00");
+
+
+      // ears
+      svg.append("circle")
+        .attr("cx", 190).attr("cy", 120).attr("r", 30).style("fill", "#993d00");
+      svg.append("circle")
+        .attr("cx", 310).attr("cy", 120).attr("r", 30).style("fill", "#993d00");
+
+      // eyes
+      svg.append("circle")
+        .attr("cx", 220).attr("cy", 150).attr("r", 5).style("fill", "black");
+      svg.append("circle")
+        .attr("cx", 280).attr("cy", 150).attr("r", 5).style("fill", "black");
+
+      // nose
+      svg.append("circle")
+        .attr("cx", 250).attr("cy", 170).attr("r", 10).style("fill", "black");
+
+      // mouth
+      var data = [{x: 220, y: 180}, {x: 235, y: 200}, {x: 250, y: 170}, {x: 265, y: 200}, {x: 280, y: 180}]
+
+      var curveFunc = d3.line()
+        .curve(d3.curveBasis)              // This is where you define the type of curve. Try curveStep for instance.
+        .x(function(d) { return d.x })
+        .y(function(d) { return d.y })
+
+      svg.append('path')
+        .attr('d', curveFunc(data))
+        .attr('stroke', 'black')
+        .attr('fill', 'none');
+
+      // body
+      svg.append("circle")
+        .attr("cx", 250).attr("cy", 300).attr("r", 100).style("fill", "#993d00");
+
+      // feet
+      svg.append("circle")
+        .attr("cx", 190).attr("cy", 380).attr("r", 40).style("fill", "#993d00");
+      svg.append("circle")
+        .attr("cx", 310).attr("cy", 380).attr("r", 40).style("fill", "#993d00");
+
+
+      // details
+      // belly
+      svg
+        .append("path")
+        .attr("transform", "translate(250,300)")
+        .attr("d", d3.arc()
+          .innerRadius( 0 )
+          .outerRadius( 60 )
+          .startAngle( -4.71 )     // It's in radian, so Pi = 3.14 = bottom.
+          .endAngle( -1.57 )       // 2*Pi = 6.28 = top
+          )
+        .attr('fill', '#ffb380');
+
+      // ears
+      svg
+        .append("path")
+        .attr("transform", "translate(190,117)")
+        .attr("d", d3.arc()
+          .innerRadius( 0 )
+          .outerRadius( 10 )
+          .startAngle( 3.6 )     // It's in radian, so Pi = 3.14 = bottom.
+          .endAngle( 7.1 )       // 2*Pi = 6.28 = top
+          )
+        .attr('fill', '#ffb380');
+
+        svg
+        .append("path")
+        .attr("transform", "translate(310,117)")
+        .attr("d", d3.arc()
+          .innerRadius( 0 )
+          .outerRadius( 10 )
+          .startAngle( -3.6 )     // It's in radian, so Pi = 3.14 = bottom.
+          .endAngle( -7.1 )       // 2*Pi = 6.28 = top
+          )
+        .attr('fill', '#ffb380');
+
+    </script>
+
+  </body>
+</html>
