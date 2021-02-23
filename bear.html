@@ -2,11 +2,6 @@
   <body>
     <svg id="chart_area" width="500" height="500"></svg>
 
-    <div style="font-family: sans-serif; font-size: 16pt;">
-      <p>Hello! I can draw in d3.js!</p>
-      <p>Love,<br>Nikki</p>
-    </div>
-
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script>
       var svg = d3.select("#chart_area")
@@ -72,7 +67,7 @@
       // ears
       svg
         .append("path")
-        .attr("transform", "translate(190,117)")
+        .attr("transform", "translate(190,120)")
         .attr("d", d3.arc()
           .innerRadius( 0 )
           .outerRadius( 10 )
@@ -83,7 +78,7 @@
 
         svg
         .append("path")
-        .attr("transform", "translate(310,117)")
+        .attr("transform", "translate(310,120)")
         .attr("d", d3.arc()
           .innerRadius( 0 )
           .outerRadius( 10 )
